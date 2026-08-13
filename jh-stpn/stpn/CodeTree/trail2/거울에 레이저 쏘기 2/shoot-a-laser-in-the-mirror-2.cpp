@@ -1,0 +1,112 @@
+#include <iostream>
+#include <string>
+#define MAX 1000
+using namespace std;
+
+string mirror[MAX];
+int dx[4] = { 0, -1, 0, 1 };
+           //북, 서, 남, 동
+int dy[4] = { -1, 0, 1, 0 };
+int N, dir, x, y, cnt;
+
+bool InRange()
+{
+    if(x < 0 || y < 0 || x >= N || y >= N)
+        return false;
+    else return true;
+}
+
+void S_dir()
+{
+    switch(dir)
+    {
+        case 0:
+            cnt++;
+            dir = 1;
+            break;
+        case 1:
+            cnt++;
+            dir = 0;
+            break;
+        case 2:
+            cnt++;
+            dir = 3;
+            break;
+        case 3:
+            cnt++;
+            dir = 2;
+            break;
+    }
+}
+
+void RS_dir()
+{
+    switch(dir)
+    {
+        case 0:
+            cnt++;
+            dir = 3;
+            break;
+        case 1:
+            cnt++;
+            dir = 2;
+            break;
+        case 2:
+            cnt++;
+            dir = 1;
+            break;
+        case 3:
+            cnt++;
+            dir = 0;
+            break;
+    }
+}
+
+int main() {
+    // Please write your code here.
+    cin >> N;
+    for(int i = 0; i < N; i++)
+    {
+        cin >> mirror[i];
+    }
+    int K;
+    cin >> K;
+    switch(K / N)
+    {   //시작점 잡기
+        case 0:
+            y = 0; x = K - 1;
+            dir = 2;
+            break;
+        case 1:
+            x = N - 1; y = K % N - 1;
+            dir = 1;
+            break;
+        case 2:
+            y = N - 1; x = N - (K % N);
+            dir = 0;
+            break;
+        case 3:
+            x = 0; y = N - (K % N);
+            dir = 3;
+            break;
+        default:
+            break;
+    }
+    while(InRange())
+    {
+        if(mirror[y][x] == '/')
+        {
+            dir = (dir + 2) % 4;
+            S_dir();
+        }
+        else
+        {
+            dir = (dir + 2) % 4;
+            RS_dir();
+        }
+        x += dx[dir];
+        y += dy[dir];
+    }
+    cout << cnt;
+    return 0;
+}
