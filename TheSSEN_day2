@@ -1,0 +1,103 @@
+#if 0
+
+#include <stdio.h>
+
+int main()
+{
+	int a, sum = 0;
+	do
+	{
+		scanf_s("%d", &a);
+		if(a > 0)
+		{
+			sum += a;
+		}
+	} while (a != 0);
+	printf("%d", sum);
+	return 0;
+}
+
+#endif
+
+#if 0
+
+#include <stdio.h>
+
+int main()
+{
+	int amho, cnt = 0;
+	do
+	{
+		if (cnt >= 3)
+		{
+			printf("관리자에게 문의하세요.\n");
+			return 0;
+		}
+		printf("입력 : ");
+		scanf_s("%d", &amho);
+		cnt++;
+	} while (amho != 1357);
+	printf("정답\n");
+	return 0;
+}
+
+#endif
+
+#if 0
+
+#include <stdio.h>
+
+int main()
+{
+	int a, sum = 0;
+	scanf_s("%d", &a);
+	while (a > 0)
+	{
+		sum++;
+		a /= 10;
+	}
+	printf("자리수 : %d\n", sum);
+	return 0;
+}
+
+#endif
+
+#if 0
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char a[100];
+	gets(a);
+	printf("반전 결과 : ");
+	for (int i = strlen(a); i >= 0; i--)
+	{
+		printf("%c", a[i]);
+	}
+	printf("\n");
+	return 0;
+}
+
+#endif
+
+#if 1
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	int a, rev = 0;
+	scanf_s("%d", &a);
+	while (a)
+	{
+		rev = rev * 10 + a % 10;
+		a /= 10;
+	}
+	printf("뒤집은 수 : %d\n", rev);
+	return 0;
+}
+
+#endif
